@@ -1,0 +1,139 @@
+{% extends "templates/base.html" %}
+
+{% load i18n %}
+
+{% block title %}
+	{% trans "Nutrition calculation results" %}
+{% endblock %}
+
+{% block content %}
+
+<style type="text/css">
+
+/* Icon when the collapsible content is shown */
+*[data-toggle="collapse"]:before {
+    font-family: "Glyphicons Halflings";
+    font-size: 0.85em;
+    content: "\e114";
+}
+
+/* Icon when the collapsible content is hidden */
+*[data-toggle="collapse"].collapsed:before {
+    content: "\e080";
+}
+</style>
+
+<h1>{% trans "Nutrition calculation results" %}</h1>
+
+<h2>{% trans "Problem" %}</h2>
+<h3 data-toggle="collapse" data-target="#problem-inputs">{% trans "Inputs" %}</h3>
+<section class="problem-inputs collapse show" id="problem-inputs">
+<ul>
+{% for input_name, input_value in inputs.items %}
+	<li>
+	<span>{{ input_name }}</span> = {{ input_value }}
+	</li>
+{% endfor %}
+</ul>
+</section>
+
+{% if problem_definition != None %}
+<h3 data-toggle="collapse" data-target="#problem-definition" class="collapsed">{% trans "Definition" %}</h3>
+<section class="problem-definition collapse" id="problem-definition">
+	{{ problem_definition }}
+</section>
+{% endif %}
+
+<h2>{% trans "Result" %}</h2>
+<section class="result">
+<h3>{% trans "Objective value" %}</h3>
+<div>
+<span>{{ result.objective_value }}</span>
+</div>
+
+<h3 data-toggle="collapse" data-target="#result-food-items">{% trans "Food items data" %}</h3>
+<section id="result-food-items" class="collapse show">
+<p>{% trans "Optimal amount of food (grams) to ingest" %}</p>
+<table class="table table-bordered table-striped">
+<thead>
+<tr>
+<th>{% trans "Food" %}</th>
+<th>{% trans "Min Qty" %}</th>
+<th>{% trans "Qty Round" %}</th>
+<th>{% trans "Qty Real" %}</th>
+<th>{% trans "Max Qty" %}</th>
+</tr>
+</thead>
+<tbody>
+{% for food_item in result.food_items %}
+<tr>
+	<td class="food-name">{{ food_item.name }}</td>
+	<td class="food-qty-min">{{ food_item.minQty|floatformat:2 }}</td>
+	<td class="food-qty-floor">{{ food_item.qty|floatformat:0 }}</td>
+	<td class="food-qty-real">{{ food_item.qty|floatformat:2 }}</td>
+	<td class="food-qty-max">{{ food_item.maxQty|floatformat:2 }}</td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+</section>
+
+<h3 data-toggle="collapse" data-target="#result-nutrients">{% trans "Nutrients data" %}</h3>
+<section id="result-nutrients" class="collapse show">
+<table class="table table-bordered table-striped">
+<thead>
+	<tr>
+		<th>{% trans "Nutrient" %}</th>
+		<th>{% trans "Min" %}</th>
+		<th>{% trans "Value" %}</th>
+		<th>{% trans "Max" %}</th>
+		<th>{% trans "Goal" %}</th>
+		<th>{% trans "WeightOver" %}</th>
+		<th>{% trans "WeightUnder" %}</th>
+		<th>{% trans "Variation" %}</th>
+		{% if inputs.use_demerits %}
+		<th>{% trans "Demerit" %}</th>
+		{% endif %}
+	</tr>
+</thead>
+<tbody>
+{% for nutrient in result.nutrients %}
+<tr>
+	<td class="nutrient-symbol">{{ nutrient.symbol }}</td>
+	<td class="nutrient-qty-min">{{ nutrient.min|floatformat:2 }}</td>
+	<td class="nutrient-qty">
+		{% if nutrient.qty != None %}
+			{{ nutrient.qty|floatformat:2 }}
+		{% else %}
+		NOT FOUND
+		{% endif %}
+	</td>
+	<td class="nutrient-qty-max">{{ nutrient.max|floatformat:2 }}</td>
+	<td class="nutrient-qty-goal">{{ nutrient.goal|floatformat:2 }}</td>
+	<td class="nutrient-qty-goal">{{ nutrient.weightOver|floatformat:2 }}</td>
+	<td class="nutrient-qty-goal">{{ nutrient.weightUnder|floatformat:2 }}</td>
+	<td class="nutrient-variation">
+		{% if nutrient.variation != None %}
+			{{ nutrient.variation|floatformat:2 }}
+		{% else %}
+		NOT FOUND
+		{% endif %}
+	</td>
+	{% if inputs.use_demerits %}
+	<td class="nutrient-demerit">
+		{% if nutrient.demerit != None %}
+			{{ nutrient.demerit|floatformat:2 }}
+		{% else %}
+		NOT FOUND
+		{% endif %}
+	</td>
+	{% endif %}
+</tr>
+{% endfor %}
+</tbody>
+</table>
+</section>
+
+</section>
+
+{% endblock %}

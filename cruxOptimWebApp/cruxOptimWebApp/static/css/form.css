@@ -1,0 +1,19 @@
+
+
+
+.form_nutrition-calculator {
+	margin: 0;
+	padding: 0;
+	position: relative;
+	max-width: 768px;
+	min-width: 455px;
+	margin: 0 auto;
+}
+
+.from-group_buttons {
+	text-align: right;
+}
+
+*[data-toggle="collapse"] {
+	cursor: pointer;
+}

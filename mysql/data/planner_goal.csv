@@ -1,0 +1,5 @@
+Id, High Level Goal, Description, Min Protein,Max Protein,Min Fat,Max Fat,Min Carb,Max Carb
+1, Maintain,,0.6,1.1,0.35,0.55,1,2
+2, Lose Weight,,0.7,1.2,0.35,0.55,0.5,1.5
+3, Build Muscle,,1,1.5,0.5,0.75,1.2,2
+4, All of the Above,,0.8,1.2,0.4,0.6,1,1.5

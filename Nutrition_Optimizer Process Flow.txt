@@ -1,0 +1,31 @@
+Nutrition optimizer process flow
+
+A: INPUTS
+1- Users enter (i) Target body weigt, (ii) Height, (iii) Age, (iv) gender, (v) High Level Goal
+2- Max and Min intake amounts for protein, fats and carbs are provided in a table for each "High Level Goal"
+3- Goal intake amounts are calculated as the average of max and min
+4- BMR Is calculated using the formula in cell D18 of the inputs sheet
+5- Total calories from min and max protein are calculated by multiplying the protein values by 4 (Column E)
+6- Total calories from min and max fat are calculated by multiplying the fat values by 9 (Column E)
+5- Total calories from min and max carbs are calculated by multiplying the carb values by 4 (Column E)
+5- Min Target Calories (cell D19) is calculated by taking the sum of calories from each minimum (protein, fats and carbs) and multiplying it by the target body weight
+6- Max Target Calories (cell D21) is calculated by taking the sum of calories from each maximum (protein, fats and carbs) and multiplying it by the target body weight
+
+B: PLANNER (Optimization)
+1- Decision Variables: Column D -- quantity (in grams) of each food item
+2- Constraints: Column E -- Max quantity for each food item
+3- Additional constraint: no negative values
+4- Goal (row 166): Pulls data from the "Inputs" and "DailyIntakeChart" sheets, based on user inputs.
+5- MIN and MAX: Pulls data either from the "Inputs" sheet or derives from the GOAL with a simple factor, or is hard-coded
+6- Variation: Difference between the GOAL and TOTAL AMOUNT
+7- Weight - Overconsumption and Underconsumption: These are hard-coded multipliers
+8- Deviation, Deviation(-ve), and Demerits: Together, these are used as a work-around in excel to multiply the deviation by the Overconsumption weight if the TOTAL amount is greater than the GOAL, or to multiply the deviation by the Underconsumption weight if the TOTAL AMOUNT is lower than the GOAL.
+9- SCORE: This is the target variable for the optimization. Solver will attempt to minimize this value, which is a SUM of all of the demerits
+
+
+C: SUMMARY
+1- Once the optimizer has minimized the total demerit points by adjusting the amounts of each food item, amounts should be presented to the user or stored in a database.
+2- The deviation of each nutrient from the GOAL amount should be presented to the user. This shows the user how "Good" The plan is. In the excel prototype, this is shown in cells P7:Q26 of the SUMMARY Sheet
+
+
+NOTE: You can Ignore sheets "Sheet1" and "Lists"

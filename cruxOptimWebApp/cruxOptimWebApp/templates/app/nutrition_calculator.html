@@ -1,0 +1,100 @@
+{% extends "templates/base.html" %}
+
+{% load i18n %}
+
+{% block title %}
+	{% trans "Nutrition calculator" %}
+{% endblock %}
+
+{% block content %}
+
+{% if msg %}
+{{ msg }}
+{% endif %}
+
+{{ form.errors }}
+{{ form.non_field_errors }}
+
+<form action="/nutrition-calculator" method="post" class="form form_nutrition-calculator">
+	{% csrf_token %}
+
+	<h1>{% trans "Nutrition calculator" %}</h1>
+
+	<div class="row">
+		<div class="form-group col-sm-12">
+			{{ form.goal.errors }}
+		    <label for="{{ form.goal.id_for_label }}">{{ form.goal.label }}</label>
+		</div>
+	    <div class="form-group btn-group col-sm-12" data-toggle="buttons">
+	    {% for radio in form.goal %}
+			<label class="btn btn-primary" for="{{ radio.id_for_label }}">{{ radio.choice_label }}{{ radio.tag }}</label>
+		{% endfor %}
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="form-group col-sm-12">
+			{{ form.age.errors }}
+		    <label for="{{ form.age.id_for_label }}">{{ form.age.label }}</label>
+		    
+		</div>
+		<div class="form-group col-sm-6">
+			{{ form.age }}
+		</div>
+		<div class="form-group col-sm-6">
+		    {{ form.age_unit }}
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="form-group col-sm-12">
+			{{ form.gender.errors }}
+		    <label for="{{ form.gender.id_for_label }}">{{ form.gender.label }}</label>
+		</div>
+		<div class="form-group col-sm-12">
+		    {{ form.gender }}
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="form-group col-sm-12">
+				{{ form.weight_value.errors }}
+			    <label for="{{ form.weight_value.id_for_label }}">{{ form.weight_value.label }}</label>
+	    </div>
+		<div class="form-group col-sm-6">
+			{{ form.weight_value }}
+	    </div>
+	    <div class="form-group col-sm-6">
+		    {{ form.weight_unit }}
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="form-group col-sm-12">
+			{{ form.height_value.errors }}
+		    <label for="{{ form.height_value.id_for_label }}">{{ form.height_value.label }}</label>
+		</div>
+		<div class="form-group col-sm-6">
+			    {{ form.height_value }}
+	    </div>
+	    <div class="form-group col-sm-6">
+			    {{ form.height_unit }}
+	    </div>
+	</div>
+
+	<div class="form-group">
+		<div class="form-check">
+			<label for="{{ form.use_demerits.id_for_label }}" class="form-check-label">
+				{{ form.use_demerits }}
+				<span>{{ form.use_demerits.label }}</span>
+			</label>
+		</div>
+	</div>
+
+	<div class="form-group from-group_buttons">
+		<hr/>
+ 		<button type="submit" class="btn btn-primary">{% trans "Calculate" %}</button>
+ 	</div>
+</form>
+
+{% endblock %}

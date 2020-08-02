@@ -1,0 +1,28 @@
+{
+  "name": "cruxOptimV1",
+  "version": "0.0.0",
+  "homepage": "https://github.com/mhwies/cruxOptimV1",
+  "authors": [
+    "Fernando Almeida <nanditu@gmail.com>"
+  ],
+  "description": "Food nutrition calculator",
+  "keywords": [
+    "food",
+    "nutrition",
+    "calculator"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~3.2.1",
+    "glyphicons": "~0.0.2",
+    "bootstrap": "v4.0.0-beta"
+  }
+}

@@ -1,0 +1,1 @@
+DROP DATABASE food_nutrition;

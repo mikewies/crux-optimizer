@@ -1,0 +1,118 @@
+[
+    {
+        "rules": [
+            {
+                "name": "min_protein",
+                "value": 0.6
+            },
+            {
+                "name": "max_protein",
+                "value": 1.1
+            },
+            {
+                "name": "min_fat",
+                "value": 0.35
+            },
+            {
+                "name": "max_fat",
+                "value": 0.55
+            },
+            {
+                "name": "min_carb",
+                "value": 1.0
+            },
+            {
+                "name": "max_carb",
+                "value": 2.0
+            }
+        ],
+        "name": "Maintain"
+    },
+    {
+        "rules": [
+            {
+                "name": "min_protein",
+                "value": 0.7
+            },
+            {
+                "name": "max_protein",
+                "value": 1.2
+            },
+            {
+                "name": "min_fat",
+                "value": 0.35
+            },
+            {
+                "name": "max_fat",
+                "value": 0.55
+            },
+            {
+                "name": "min_carb",
+                "value": 0.5
+            },
+            {
+                "name": "max_carb",
+                "value": 1.5
+            }
+        ],
+        "name": "Lose Weight"
+    },
+    {
+        "rules": [
+            {
+                "name": "min_protein",
+                "value": 1.0
+            },
+            {
+                "name": "max_protein",
+                "value": 1.5
+            },
+            {
+                "name": "min_fat",
+                "value": 0.5
+            },
+            {
+                "name": "max_fat",
+                "value": 0.75
+            },
+            {
+                "name": "min_carb",
+                "value": 1.2
+            },
+            {
+                "name": "max_carb",
+                "value": 2.0
+            }
+        ],
+        "name": "Build Muscle"
+    },
+    {
+        "rules": [
+            {
+                "name": "min_protein",
+                "value": 0.8
+            },
+            {
+                "name": "max_protein",
+                "value": 1.2
+            },
+            {
+                "name": "min_fat",
+                "value": 0.4
+            },
+            {
+                "name": "max_fat",
+                "value": 0.6
+            },
+            {
+                "name": "min_carb",
+                "value": 1.0
+            },
+            {
+                "name": "max_carb",
+                "value": 1.5
+            }
+        ],
+        "name": "All of the Above"
+    }
+]

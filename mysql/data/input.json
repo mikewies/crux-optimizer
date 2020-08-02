@@ -1,0 +1,20 @@
+{
+	"weight": {
+		"value": 185,
+		"unit": "lbs"
+	},
+	"height": {
+		"value": 72,
+		"unit": "inches"
+	},
+	"age": {
+		"value": 29,
+		"unit": "years",
+	},
+	"pregnant": {
+		"value": false
+	},
+	"goal": {
+		"value": "All Above"
+	}
+}
