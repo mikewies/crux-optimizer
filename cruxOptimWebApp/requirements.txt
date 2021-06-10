@@ -1,4 +1,4 @@
-Django==1.11.29
+Django==2.2.24
 pulp==1.6.8
 mysqlclient==2.0.1
 gunicorn==19.5.0
